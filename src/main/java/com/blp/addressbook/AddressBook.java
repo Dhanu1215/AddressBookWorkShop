@@ -1,10 +1,32 @@
 package com.blp.addressbook;
 
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 import java.util.Scanner;
 
 public class AddressBook extends AddressBookMain {
     private static final ArrayList<Contacts> list = new ArrayList<Contacts>();
+
+    /**
+     * Call method to delete contact by searching firstname in contact list
+     */
+    public void deleteContact() throws ConcurrentModificationException {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter firstname to Delete Contact: ");
+        String name = sc.nextLine();
+        try {
+            for (Contacts search : list) {
+                if (name.equalsIgnoreCase(search.getFirstName())) {
+                    System.out.println("Entered name found in the Address Book, deleting contact");
+                    list.remove(search);
+                } else {
+                    System.out.println("Entered name not found in the Address Book");
+                }
+            }
+        } catch (ConcurrentModificationException e) {
+            System.out.println("Exception is " + e.toString());
+        }
+    }
 
     /**
      * Call method to edit the contact by searching firstname
@@ -50,22 +72,22 @@ public class AddressBook extends AddressBookMain {
     /**
      * Call method to add the contact details.
      */
-    public void addContactDetails(String firstName, String lastName, String address, String city, String state, int zip, long mobNum, String emailId) {
+    public void addContactDetails() {
         Scanner sc = new Scanner(System.in);
         System.out.println("First Name = ");
-        firstName = sc.nextLine();
+        String firstName = sc.nextLine();
         System.out.println("Last Name = ");
-        lastName = sc.nextLine();
+        String lastName = sc.nextLine();
         System.out.println("Address = ");
-        address = sc.nextLine();
+        String address = sc.nextLine();
         System.out.println("City = ");
-        city = sc.nextLine();
+        String city = sc.nextLine();
         System.out.println("State = ");
-        state = sc.nextLine();
+        String state = sc.nextLine();
         System.out.println("Zip Code = ");
-        zip = sc.nextInt();
+        int zip = sc.nextInt();
         System.out.println("Phone Number = ");
-        mobNum = sc.nextLong();
+        long mobNum = sc.nextLong();
         System.out.println("Email = ");
         String email = sc.nextLine();
         Contacts person = new Contacts(firstName, lastName, address, city, state, zip, mobNum, email);

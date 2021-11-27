@@ -1,4 +1,5 @@
 package com.blp.addressbook;
+
 import java.util.Scanner;
 
 /**
@@ -13,40 +14,37 @@ public class AddressBookMain {
         Scanner sc = new Scanner(System.in);
         System.out.println("1 . Add contact");
         System.out.println("2 . Edit contact");
-        System.out.println("3 . Exit");
+        System.out.println("3. delete contact");
+        System.out.println("4 . Exit");
         int choice = sc.nextInt();
         while (choice >= 1) {
-            if (choice == 1) {
-                System.out.println("Enter Contact Details");
-                System.out.println("Enter firstname");
-                String firstName = sc.next();
-                System.out.println("Enter lastname");
-                String lastName = sc.next();
-                System.out.println("Enter address");
-                String address = sc.next();
-                System.out.println("Enter city");
-                String city = sc.next();
-                System.out.println("Enter state");
-                String state = sc.next();
-                System.out.println("Enter zip");
-                int zip = sc.nextInt();
-                System.out.println("Enter mobile number");
-                long mobNum = sc.nextLong();
-                System.out.println("Enter email-Id");
-                String emailId = sc.next();
-                contact.addContactDetails(firstName, lastName, address, city, state, zip, mobNum, emailId);
-            }
-            if (choice == 2) {
-                contact.editContact();
-            }
-            if (choice == 3) {
-                System.out.println("Exit program");
+            switch (choice) {
+                case 1:
+                    if (choice == 1) {
+                        contact.addContactDetails();
+                    }
+                    break;
+                case 2:
+                    if (choice == 2) {
+                        contact.editContact();
+                    }
+                    break;
+                case 3:
+                    if (choice == 3) {
+                        contact.deleteContact();
+                    }
+                    break;
+                case 4:
+                    if (choice == 4) {
+                        System.out.println("Exit program");
+                    }
+                    break;
             }
             System.out.println("1 . Add contact");
             System.out.println("2 . Edit contact");
-            System.out.println("3 . Exit");
+            System.out.println("3. delete contact");
+            System.out.println("4 . Exit");
             choice = sc.nextInt();
         }
     }
-
 }
