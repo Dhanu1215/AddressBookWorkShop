@@ -2,6 +2,9 @@ package com.blp.addressbook;
 
 import java.util.Scanner;
 
+/**
+ * Address BooK Program.
+ */
 public class AddressBookMain {
 
     public static void main(String[] args) {
