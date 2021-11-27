@@ -41,6 +41,7 @@ public class AddressBookMain {
             }
             System.out.println("1 . Add contact");
             System.out.println("2 . Exit");
+            choice = sc.nextInt();
         }
     }
 }
